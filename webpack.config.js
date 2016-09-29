@@ -5,8 +5,7 @@ var webpack = require('webpack');
 var path=require('path');
 module.exports = {
     entry: {
-
-        app:['./app/app.js']
+        app:['./app/main.js']
     },
     output: {
         path: __dirname+'/build',
@@ -19,8 +18,15 @@ module.exports = {
                 loaders:['babel?cacheDirectory='+__dirname+'/babelCatche'],
                 include: path.resolve(__dirname, 'app'),
                 exclude:/node_modules/
-            }
+            },
+            { test: /\.less$/, loader: 'style-loader!css-loader!less-loader' }, // use ! to chain loaders
+            { test: /\.css$/, loader: 'style-loader!css-loader' },
         ]
     },
-    plugins:[]
+    plugins:[
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.DedupePlugin(),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
+    ]
 };

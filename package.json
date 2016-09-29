@@ -6,15 +6,23 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "antd": "^2.0.0",
+    "babel-plugin-import": "^1.0.1",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "ejs": "~2.4.1",
     "express": "~4.13.4",
+    "isomorphic-fetch": "^2.2.1",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0",
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "react-redux": "^4.4.5",
+    "react-router": "^2.8.1",
+    "redux": "^3.6.0",
+    "redux-logger": "^2.6.1",
+    "redux-thunk": "^2.1.0",
+    "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
@@ -23,9 +31,12 @@
     "babel-preset-react": "^6.3.13",
     "babel-preset-stage-0": "^6.3.13",
     "css-loader": "^0.23.1",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
     "react-date-range": "^0.2.4",
     "react-hot-loader": "^3.0.0-beta.5",
     "react-router": "^2.8.1",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-dev-middleware": "^1.8.3",
     "webpack-dev-server": "^1.16.1",

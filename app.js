@@ -14,9 +14,6 @@ config.entry.app.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&time
 // config.entry.app.unshift('webpack-dev-server/client?http://127.0.0.1:5000');
 // config.entry.app.unshift('webpack/hot/only-dev-server');
 //config.module.loaders[0].loaders.unshift('react-hot');
-config.plugins.push(new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin());
 var compiler=webpack(config);
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -76,7 +73,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-app
+
 
 
 
