@@ -41,7 +41,8 @@ class Sider extends React.Component{
         });
         return (
             <aside className="ant-layout-sider">
-                <div className="ant-layout-logo"></div>
+                <div className="ant-layout-logo">
+                </div>
                 <Menu mode="inline" theme="dark"
                       defaultSelectedKeys={['1']} defaultOpenKeys={['sub1']} onClick={handleClick} >
                       {items}
