@@ -5,25 +5,30 @@
  * Created by yunlong on 16/9/27.
  */
 import React from 'react';
-import Sider from './components/Sider';
-import Header from './components/Header'
-import Breadcrumb from './components/Breadcrumb'
-import {fetchData} from './actions/SiderActions'
+import Sider from '../components/Sider';
+import Header from '../components/Header'
+import Breadcrumb from '../components/Breadcrumb'
+import {fetchData as fetchSiderData} from '../actions/SiderActions'
 import { connect } from 'react-redux'
 class App extends React.Component{
     constructor(props){
         super(props);
         this.handleClick = this.handleClick.bind(this)
+        this.tableLoadData=this.tableLoadData.bind(this)
     }
     handleClick(){
-       this.props.dispatch(fetchData());//分发actions
+       this.props.dispatch(fetchSiderData());//分发actions
+    }
+
+    tableLoadData(){
+        this.props.dispatch(fetchTableData());
     }
     render(){
         const {msg,data}=this.props;
         return(
             <div>
                 <div className="ant-layout-aside">
-                    <Sider onClick={this.handleClick}/>
+                    <Sider />
                     <div className="ant-layout-main">
                        <Header/>
                         <Breadcrumb />
@@ -44,9 +49,8 @@ class App extends React.Component{
     }
 }
 function mapStateToProps(state) {
-  const {fetchData}=state;
-    const {data,msg}=fetchData;
-    return {fetchData,msg,data};
+
+    return {state};
 
 }
 export default connect(mapStateToProps)(App);

@@ -17,7 +17,7 @@ function  receiveData(json) {
         receiveAt:Date.now()
     }
 }
-export function fetchData(){
+export default function fetchData(){
     return dispatch=>{
         dispatch(requestData())
         return fetch('/api/getdata')
