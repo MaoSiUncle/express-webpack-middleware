@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "build": "webpack && node ./bin/www",
+    "upload": "webpack && git add . && git commit -m '修改广告数据' && git push origin dev-yunlong:dev-yunlong"
   },
   "dependencies": {
     "antd": "^2.0.0",
@@ -14,6 +16,7 @@
     "ejs": "~2.4.1",
     "express": "~4.13.4",
     "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.15.1",
     "morgan": "~1.7.0",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
@@ -22,7 +25,8 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "superagent": "^2.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",

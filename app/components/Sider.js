@@ -17,15 +17,26 @@ class Sider extends React.Component{
         const {handleClick}=this.props;
         const menuArr=[
             {
-                text:"首页",
-                type:"desktop",
+                text:"基础数据",
+                type:"pie-chart",
                 key:"1",
                 children:[
                     {
-                        text:"Demo",
-                        type:"smile-o",
+                        text:"社区列表",
                         key:"1.1",
-                        href:"/Data"
+                        href:"/basic/communities"
+                    }
+                ]
+            },
+            {
+                text:"统计数据",
+                type:"area-chart",
+                key:"2",
+                children:[
+                    {
+                        text:"广告数据",
+                        key:"2.1",
+                        href:"/stat/ads"
                     }
                 ]
             }
@@ -34,7 +45,7 @@ class Sider extends React.Component{
             if(item.children.length>0){
                 ///有子节点
                 var childrenItems=item.children.map(function (child) {
-                    return <Menu.Item key={child.key} type={child.type}><Link to={child.href}>{child.text}</Link></Menu.Item>
+                    return <Menu.Item key={child.key} ><Link to={child.href}>{child.text}</Link></Menu.Item>
                 });
                 return <SubMenu key={item.key} title={<span><Icon type={item.type} />{item.text}</span>}>{childrenItems}</SubMenu>
             }

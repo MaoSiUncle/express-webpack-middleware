@@ -2,7 +2,21 @@
  * Created by yunlong on 16/9/30.
  */
 import React from 'react'
-import {Table,Icon} from 'antd'
+import {Table,Modal} from 'antd'
+import {Link} from 'react-router'
+function info() {
+    Modal.info({
+        title: 'This is a notification message',
+        content: (
+            <div>
+                <p>some messages...some messages...</p>
+                <p>some messages...some messages...</p>
+            </div>
+        ),
+        onOk() {},
+    });
+}
+
 const columns = [{
     title: '社区名称',
     dataIndex: 'name',
@@ -73,18 +87,41 @@ const columns = [{
             var deviceTypeKey=record.setting['deviceType'];
             deviceTypeName=kvForDevice[deviceTypeKey]?kvForDevice[deviceTypeKey]:'设备';
         };
-       return deviceTypeName;
+        return deviceTypeName;
 
     }
 }, {
     title: '操作',
     key: 'operation',
     render: function (text,record) {
-        return text;
+        var kvForDevice={
+            //'js':'JS',
+            'js':"厂商JS",
+            'test':"媒体JS",
+            'test1':"特殊JS"
+        }
+        var operation='未审核';
+        if(record.status){
+            if(record.setting && record.setting['deviceType']){
+                var deviceTypeKey=record.setting['deviceType'];
+                if(kvForDevice[deviceTypeKey]){
+                    operation = <div>
+                        <a className='btn' onClick={info}><span>业务配置</span></a>
+                        <span className="ant-divider" />
+                        <a className='btn' ><span>使用指南</span></a>
+                    </div>;
+                }else{
+                    operation = <Link className='btn' to={ '/basic/communities/info/'+record._id}  ><span>社区管理</span></Link>;
+                }
+            }else{
+                operation = <Link className='btn' to={ '/basic/communities/info/'+record._id }><span>社区管理</span></Link>;
+            }
+        }
+        return operation;
     },
 }];
 
-class DataTable extends React.Component{
+class BasicCommunitiesList extends React.Component{
     constructor(props){
         super(props)
         this.state={
@@ -92,15 +129,19 @@ class DataTable extends React.Component{
             pagination: {}
         }
     }
+
+
     componentWillMount(){
         this.props.loadData();
     }
     render(){
         const {data,isloading}=this.props;
-        console.log(isloading)
         return (
-            <Table columns={columns} loading={isloading} dataSource={data} />
+            <div>
+                <Table  columns={columns} loading={isloading} dataSource={data} />
+            </div>
+
         )
     }
 }
-export default DataTable;
+export default BasicCommunitiesList;
